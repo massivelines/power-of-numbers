@@ -1,0 +1,131 @@
+#internal {
+  /* App container */
+  .app-container {
+  }
+
+  /* Header */
+  .header {
+  }
+
+  /* Formula dropdown Section */
+  .formula-section {
+  }
+
+  /* Total Section */
+  .total-section {
+    @include tablet {
+      justify-content: center;
+    }
+
+    .total-container {
+      @include tablet {
+        max-width: 448px;
+      }
+    }
+  }
+
+  /* Input Section */
+  .input-section {
+    justify-content: center;
+
+    form {
+      @include tablet {
+        max-width: 768px;
+      }
+    }
+
+    .form-header {
+    }
+
+    .form-header {
+      display: none;
+
+      @include tablet {
+        height: 1rem;
+        display: flex;
+        justify-content: flex-end;
+        color: $blue;
+        margin-bottom: 0.625rem;
+        .year-title {
+          width: 16.665%;
+          padding: 0 0 0 0.625rem;
+          text-align: center;
+        }
+      }
+    }
+
+    .input-holder {
+      justify-content: space-between;
+
+      @include tablet {
+        justify-content: flex-start;
+      }
+
+      .input-title {
+        width: 100%;
+        padding: 0.3125rem;
+        color: $white;
+        background-color: $blue;
+        border-radius: 0.3125rem;
+
+        @include tablet {
+          width: 66.66%;
+        }
+      }
+
+      label {
+        width: 66.6%;
+        padding: 0.3125rem;
+        color: $white;
+        background-color: $blue;
+        border-radius: 0.3125rem 0 0 0.3125rem;
+      }
+
+      input {
+        width: 33.3%;
+        border-radius: 0 0.3125rem 0.3125rem 0;
+        border-left: none;
+        border-top: 0.0625rem solid $medGray;
+        border-right: 0.0625rem solid $medGray;
+        border-bottom: 0.0625rem solid $medGray;
+      }
+    }
+
+    .input-holder.section {
+      .input-wrapper {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.3125rem 0.625rem;
+
+        @include tablet {
+          width: 16.665%;
+          padding: 0 0 0 0.625rem;
+        }
+
+        label {
+          width: 45%;
+          word-spacing: 9999rem;
+          text-align: center;
+          color: $blue;
+          padding: 0;
+          background-color: transparent;
+
+          @include tablet {
+            display: none;
+          }
+        }
+
+        input {
+          width: 50%;
+          border: 0.0625rem solid $medGray;
+          border-radius: 0.3125rem;
+
+          @include tablet {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

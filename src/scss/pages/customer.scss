@@ -1,0 +1,80 @@
+#customer {
+  /* App container */
+  .app-container {
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        'header header'
+        'formulas formulas'
+        'inputs total';
+      column-gap: 20px;
+    }
+  }
+
+  /* Header */
+  // .header {
+  // }
+
+  /* Formula dropdown Section */
+  .dropdown-section {
+    @include tablet {
+      border-bottom: 1px solid $medGray;
+      margin-bottom: 0.9375rem;
+    }
+  }
+
+  /* Total Section */
+  .total-section {
+    @include tablet {
+      background-color: transparent;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    .total-container {
+      @include tablet {
+        max-width: 354px;
+        padding: 0;
+
+        .total-arrow {
+          right: -0.625rem;
+        }
+      }
+    }
+  }
+
+  /* Input Section */
+  .input-section {
+    @include tablet {
+      justify-content: flex-end;
+    }
+    form {
+      @include tablet {
+        max-width: 354px;
+        padding: 0rem;
+      }
+    }
+
+    // .input-holder {
+    //   flex-wrap: nowrap;
+    // }
+
+    label {
+      width: 66.6%;
+      padding: 0.3125rem;
+      color: $white;
+      background-color: $blue;
+      border-radius: 0.3125rem 0 0 0.3125rem;
+    }
+
+    input {
+      width: 33.3%;
+      border-radius: 0 0.3125rem 0.3125rem 0;
+      border-left: none;
+      border-top: 0.0625rem solid $medGray;
+      border-right: 0.0625rem solid $medGray;
+      border-bottom: 0.0625rem solid $medGray;
+    }
+  }
+}

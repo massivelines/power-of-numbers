@@ -1,0 +1,317 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $lightGray;
+  // line-height: 1rem;
+}
+
+/* App container */
+// Tablet and up grid are in pages
+.app-container {
+  display: grid;
+  min-height: 100vh;
+  min-height: calc(var(--screenHeight, 1vh) * 100);
+  min-width: 100vw;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  grid-template-areas:
+    'header'
+    'formulas'
+    'total'
+    'inputs';
+}
+
+/* Header */
+.header {
+  grid-area: header;
+  height: 100%;
+  width: 100%;
+  background-color: $white;
+  position: relative;
+  z-index: 0;
+
+  .title {
+    width: 100%;
+    padding: 0.625rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    color: $blue;
+    position: relative;
+    z-index: 1;
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+  }
+
+  // background image
+  .title:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+    z-index: -1;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: $lightGray;
+
+    .nav-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+
+      @include tablet {
+        width: 50%;
+        max-width: 384px;
+        border-radius: 0.3125rem;
+        margin-top: 0.9375rem;
+      }
+    }
+
+    .nav-link-container {
+      width: 50%;
+      background-color: $medGray;
+
+      .nav-link {
+        display: flex;
+        width: 100%;
+        padding: 0.5rem;
+        color: $blue;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .active {
+        height: 100%;
+        color: $white;
+        background-color: $blue;
+      }
+    }
+  }
+}
+
+/* Dropdown Section */
+.dropdown-section {
+  grid-area: formulas;
+  display: flex;
+  justify-content: center;
+  background-color: $lightGray;
+
+  .dropdown-container {
+    width: 100%;
+    margin: 0.9375rem 0.625rem;
+    position: relative;
+    display: inline-block;
+
+    @include tablet {
+      width: 50%;
+      max-width: 320px;
+      margin: 0.9375rem 0.625rem;
+      padding: 0;
+    }
+
+    .dropdown-button {
+      width: 100%;
+      padding: 0.3125rem 0;
+      background-color: $white;
+      font-size: 1.25rem;
+      // font-weight: $semiBold;
+      color: $blue;
+      // temp: change up border width
+      border-width: 0.0625rem;
+      // border-width: 0px 1px 2px 1px;
+      border-style: solid;
+      border-color: $blue;
+      border-radius: 0.3125rem;
+      cursor: pointer;
+
+      @include tablet {
+        font-size: 1.125rem;
+      }
+
+      &::before {
+        content: '';
+        width: 0;
+        height: 0;
+        margin-right: 0.75rem;
+        border-left: 0.375rem solid transparent;
+        border-right: 0.375rem solid transparent;
+        border-top: 0.375rem solid $blue;
+        position: absolute;
+        right: 0;
+        top: calc(50% - 0.1875rem);
+      }
+    }
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+      background-color: $medGray;
+    }
+
+    // (Hidden by Default)
+    .dropdown-content {
+      display: none;
+      width: 100%;
+      position: absolute;
+      background-color: $white;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    // Links inside the dropdown
+    .dropdown-content div {
+      color: black;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+
+    // Change color of dropdown links on hover
+    .dropdown-content div:hover {
+      background-color: $medGray;
+    }
+
+    // JS add class to .dropdown-content container when clicked on the dropdown button
+    .show {
+      display: block;
+    }
+  }
+}
+
+/* Total Section */
+// tablet size css is in pages
+.total-section {
+  grid-area: total;
+  display: flex;
+  background-color: $white;
+  border-top: 1px solid $medGray;
+  border-bottom: 1px solid $medGray;
+  position: relative;
+  z-index: 1;
+  background-color: $white;
+
+  .total-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 0.625rem;
+    position: relative;
+    z-index: 1;
+
+    #outputTotal {
+      width: 100%;
+      height: 100%;
+      // display: flex;
+      // flex: 1 1 auto;
+      // justify-content: center;
+      // align-items: center;
+      padding: 1.5625rem 0;
+      font-size: 2.5rem;
+      text-align: center;
+      font-weight: $semiBold;
+      color: $blue;
+      background-color: $lightBlue;
+      border-radius: 5px;
+    }
+
+    .total-arrow {
+      height: 40px;
+      width: auto;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+/* Input Section */
+.input-section {
+  grid-area: inputs;
+  display: flex;
+  flex: 1 1 auto;
+  background-color: $lightGray;
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    padding: 0.625rem;
+
+    // grows input warper to make reset sticky
+    .input-container {
+      flex: 1 1 0;
+
+      // shrinks for input wrapper for tablet and up
+      @include tablet {
+        flex: 0 0 0;
+      }
+
+      .input-holder {
+        width: 100%;
+        margin-bottom: 0.3125rem;
+        display: flex;
+        flex-wrap: wrap;
+
+        // remove bottom margin on last input-holder
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        input {
+          text-align: center;
+          background-image: none;
+          background-color: $white;
+          box-shadow: none;
+          caret-color: transparent;
+        }
+      }
+    }
+
+    .button-container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      .reset-button {
+        font-size: 1rem;
+        line-height: 1;
+        color: $white;
+        text-transform: uppercase;
+        font-family: inherit;
+        display: inline-block;
+        background-color: $blue;
+        border: none;
+        border-radius: 2.375rem;
+        padding: 0.3125rem 1.25rem;
+        margin: 1.25rem;
+        // transition: background-color 0.25s ease-out, color 0.25s ease-out;
+
+        @include tablet {
+          margin-top: 1.25rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+/* ----------
+** Import files
+** ---------- */
+
+// import Open Sans
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+
+// import normalize
+@import './normalize/_import-now';
+
+// variables and mixins
+@import './variables';
+@import './mixins';
+
+// page specific css
+@import './core';
+@import './pages/customer';
+@import './pages/internal';
+
